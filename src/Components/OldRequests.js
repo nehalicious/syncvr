@@ -68,7 +68,7 @@ export default function OldRequests() {
                 : null}
             {!loading && requests? requests.map(x=>
                 <RequestBox
-                    index={x.id}
+                    index={x.index}
                     value={x.value}
                     timestamp={x.access_time._seconds}/>
             ) : null}

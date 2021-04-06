@@ -18,7 +18,7 @@ export default function RequestBox(props) {
             className="p-4"
             style={containerStyle}>
             <Row>
-                Fibonacci number {props.id} = {props.value}
+                Fibonacci number {props.index} = {props.value}
             </Row>
             <Row>
                 <p>

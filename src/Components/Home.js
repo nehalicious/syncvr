@@ -20,7 +20,7 @@ export default function Home() {
         await axios.post('https://us-central1-syncvr-fc5d5.cloudfunctions.net/app/fibonacci/', {
             index: number
         }).then(res=>{
-                if(res.status === 200) {setResult(res.data)}
+                if(res.status === 200) {setResult(res.data.data)}
                 else{displayServerError(true)}
             }
         ).catch(e=>displayServerError(true))

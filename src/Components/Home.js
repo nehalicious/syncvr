@@ -20,8 +20,8 @@ export default function Home() {
         await axios.post('https://us-central1-syncvr-fc5d5.cloudfunctions.net/app/fibonacci/', {
             index: number
         }).then(res=>{
-            if(res.status === 200) {setResult(res.data)}
-            else{displayServerError(true)}
+                if(res.status === 200) {setResult(res.data)}
+                else{displayServerError(true)}
             }
         ).catch(e=>displayServerError(true))
     };
@@ -45,34 +45,41 @@ export default function Home() {
     const alignCenter = {
         marginRight: 'auto',
         marginLeft: 'auto',
-   };
+    };
 
     return (
         <Container fluid style={{minHeight: '100vh', width: '100%'}}>
-            <Row className="p-5 mx-auto" style={headingStyle}>SyncVR Fibonacci Challenge</Row>
-            <Row style={alignCenter} className="p-5">
-                <Form>
+            <Row className="p-5 mx-auto" style={headingStyle}>
+                <p style={alignCenter}>SyncVR Fibonacci Challenge</p>
+            </Row>
+            <Row style={{width : '100%'}} className="p-5">
+                <Form style={alignCenter}>
                     <Form.Group controlId="formNumber">
                         <Form.Label>Which fibonacci number do you want to see</Form.Label>
                         <Form.Control onChange={e=>handleChange(e.target.value)} type="number" placeholder="Enter number" />
                     </Form.Group>
 
-                    <Button style={alignCenter} onClick = {(e)=>handleSubmit(e)} variant="primary" type="submit">
-                        Submit
-                    </Button>
+                    <Row>
+                        <Button style={alignCenter} onClick = {(e)=>handleSubmit(e)} variant="primary" type="submit">
+                            Submit
+                        </Button>
+                        <Button
+                            style={alignCenter}
+                            onClick={()=>{history.push('/OldRequests')}}>
+                            View past requests
+                        </Button>
+                    </Row>
                     {error? <Form.Text> Please enter a positive number </Form.Text> : null}
                 </Form>
             </Row>
-            {result ? <Row> The fibonacci number is: {result.value} </Row>:null}
-             {serverError ? <Row> We wouldn't get the server to worK properly :( You can still check the previous requests though </Row>:null}
-
-            <Row style={{width: '100%'}} className="p-5">
-                <Button
-                    onClick={()=>{history.push('/OldRequests')}}>
-                    View past requests
-                </Button>
-            </Row>
-
+            {result ?
+                <Row>
+                    <p style={alignCenter}>The fibonacci number is: {result.value}</p>
+                </Row>:null}
+            {serverError ?
+                <Row>
+                    <p style={alignCenter}>We wouldn't get the server to worK properly :( You can still check the previous requests though </p>
+                </Row>:null}
         </Container>
     )
 }

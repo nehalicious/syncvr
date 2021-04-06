@@ -13,9 +13,15 @@ export default function Home() {
     const [error, displayError] = useState(false);
     const history = useHistory();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(number);
+        await axios.post('https://us-central1-syncvr-fc5d5.cloudfunctions.net/app/fibonacci/', {
+            index: number
+        }).then(res=>{
+            if(res.status === 200) {console.log(res.data)}
+            else{console.log(error)}
+            }
+        ).catch(e=>console.log(error))
     };
 
     const handleChange = (input) => {

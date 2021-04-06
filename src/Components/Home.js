@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
-import {Container, Row, Form, Button} from 'react-bootstrap'
+import {Container, Row, Form, Button} from 'react-bootstrap';
+import {useHistory} from 'react-router-dom';
 
 export default function Home() {
     const [number, setNumber] = useState(1);
-    const [error, displayError] = useState(false)
+    const [error, displayError] = useState(false);
+    const history = useHistory();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -40,8 +42,10 @@ export default function Home() {
                     {error? <Form.Text> Please enter a positive number </Form.Text> : null}
                 </Form>
             </Row>
-            <Row className="p-5">
-                <Button>
+            <Row style={{width: '100%'}} className="p-5">
+                <Button
+                    style={{marginRight: 'auto', marginLeft: 'auto'}}
+                    onClick={()=>{history.push('/OldRequests')}}>
                     View past requests
                 </Button>
             </Row>

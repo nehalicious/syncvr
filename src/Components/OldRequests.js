@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import {Container, Row} from 'react-bootstrap'
+import {Container, Row, Button} from 'react-bootstrap'
 import axios from 'axios';
-import SimpleDateTime  from 'react-simple-timestamp-to-date';
+import RequestBox from "./RequestBox";
+import {useHistory} from 'react-router-dom';
 
 export default function OldRequests() {
     const [loading, isLoading] = useState(true);
     const [requests, setRequests] = useState(null);
     const [error, isError] = useState(false);
+    const history=useHistory();
 
     const getRequests = async() => {
         isError(false)
@@ -29,26 +31,27 @@ export default function OldRequests() {
         getRequests();
     }, []);
 
-    const getReqRows = (x) => {
-        return (
-            <>
-                <Row>
-                    Fibonacci number {x.value+1} = {x.value}
-                </Row>
-                <Row>
-                    <p>Time of access:</p>
-                    <SimpleDateTime dateSeparator="-" format="MYD" timeSeparator=":" meridians="1">{x.access_time._seconds}</SimpleDateTime>
-                </Row>
-            </>
-        )
+     const headingStyle = {
+        width: '100%',
+        fontSize: '7.5vh',
+        textAlign: 'center',
+         fontWeight: 'bold',
+         fontColor: '#4D3F3F'
     }
 
     return (
-        // <h1>Wtf</h1>
         <Container fluid style={{minHeight: '100vh', width: '100%'}}>
-            <Row> Previous requests can be found below</Row>
+            <Row className="p-5 mx-auto" style={headingStyle}> Previous requests can be found below</Row>
+            {loading? <Row> Loading data, please wait</Row>:null}
             {!loading && error? <Row>Your data could not be retreived at this time</Row> : null}
-            {!loading && requests? requests.map(x=>getReqRows(x)) : null}
+            {!loading && requests? requests.map(x=>
+                <RequestBox value={x.value} timestamp={x.access_time._seconds}/>
+                ) : null}
+                <Row className="p-5" style={{width: '100%'}}>
+                    <Button style={{marginRight: 'auto', marginLeft: 'auto'}} onClick = {()=>history.push('/Home')}>
+                        Calculate new Fibonacci
+                    </Button>
+                </Row>
         </Container>
     )
 }

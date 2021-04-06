@@ -24,12 +24,18 @@ export default function Home() {
         if(input>0) {
             setNumber(input);
         } else displayError(true);
+    };
+
+    const headingStyle = {
+        width: '100%',
+        fontSize: '7.5vh',
+        textAlign: 'center'
     }
 
     return (
-        <Container fluid>
-            <Row> SyncVR Fibonacci Challenge</Row>
-            <Row>
+        <Container fluid style={{minHeight: '100vh', width: '100%'}}>
+            <Row className="p-5" style={headingStyle}> SyncVR Fibonacci Challenge</Row>
+            <Row className="p-5">
                 <Form>
                     <Form.Group controlId="formNumber">
                         <Form.Label>Which fibonacci number do you want to see</Form.Label>
@@ -42,6 +48,12 @@ export default function Home() {
                     {error? <Form.Text> Please enter a positive number </Form.Text> : null}
                 </Form>
             </Row>
+            <Row className="p-5">
+                <Button>
+                    View past requests
+                </Button>
+            </Row>
+
         </Container>
     )
 }

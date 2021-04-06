@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/syncvr.iml" filepath="$PROJECT_DIR$/.idea/syncvr.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../syncvr_api/.idea/syncvr_api.iml" filepath="$PROJECT_DIR$/../syncvr_api/.idea/syncvr_api.iml" />
     </modules>
   </component>
 </project>

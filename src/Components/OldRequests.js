@@ -70,7 +70,7 @@ export default function OldRequests() {
                 <RequestBox
                     index={x.id}
                     value={x.value}
-                    timestamp={x.access_time}/>
+                    timestamp={x.access_time._seconds}/>
             ) : null}
             <Row
                 className="p-5"

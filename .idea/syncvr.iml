@@ -7,5 +7,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="syncvr_api" />
+    <orderEntry type="module" module-name="pepper" />
   </component>
 </module>

@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {Container, Row, Form, Button} from 'react-bootstrap'
-import {db} from '../firebase'
 
 export default function Home() {
     const [number, setNumber] = useState(1);
@@ -9,14 +8,7 @@ export default function Home() {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(number);
-        // or get the single doc from the collection
-        db.collection("fibonacci")
-            .doc(number)
-            .get()
-            .then(doc => {
-                const data = doc.data();
-                console.log(data);
-            });
+
     };
 
     const handleChange = (input) => {

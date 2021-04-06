@@ -1,7 +1,17 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import {Container, Row} from 'react-bootstrap'
 
 export default function OldRequests() {
+    const [loading, isLoading] = useState(true);
+    const [requests, getRequests] = useState(null);
+
+    useEffect(()=> {
+        isLoading(true)
+    }, []);
+
     return (
-        <h1>old requests page</h1>
+        <Container fluid style={{minHeight: '100vh', width: '100%'}}>
+            <Row> Previous requests can be found below</Row>
+        </Container>
     )
 }

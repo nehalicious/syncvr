@@ -49,18 +49,35 @@ export default function OldRequests() {
 
     return (
         <Container fluid style={{minHeight: '100vh', width: '100%'}}>
-            <Row className="p-5 mx-auto" style={headingStyle}> Previous requests can be found below</Row>
+            <Row
+                className="p-5 mx-auto"
+                style={headingStyle}>
+                Previous requests can be found below
+            </Row>
             {loading?
-                <Row className="px-5"> Loading data, please wait</Row>
+                <Row
+                    className="px-5">
+                    Loading data, please wait
+                </Row>
                 :null}
             {!loading && error?
-                <Row className="px-5">Your data could not be retreived at this time</Row>
+                <Row
+                    className="px-5">
+                    Your data could not be retreived at this time
+                </Row>
                 : null}
             {!loading && requests? requests.map(x=>
-                <RequestBox index={x.id} value={x.value} timestamp={x.access_time._seconds}/>
+                <RequestBox
+                    index={x.id}
+                    value={x.value}
+                    timestamp={x.access_time._seconds}/>
             ) : null}
-            <Row className="p-5" style={{width: '100%'}}>
-                <Button style={{marginRight: 'auto', marginLeft: 'auto'}} onClick = {()=>history.push('/Home')}>
+            <Row
+                className="p-5"
+                style={{width: '100%'}}>
+                <Button
+                    style={{marginRight: 'auto', marginLeft: 'auto'}}
+                    onClick = {()=>history.push('/Home')}>
                     Calculate new Fibonacci
                 </Button>
             </Row>

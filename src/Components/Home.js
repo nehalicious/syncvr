@@ -80,9 +80,6 @@ export default function Home() {
                 <Row>
                     <p style={alignCenter}>We wouldn't get the server to worK properly :( You can still check the previous requests though </p>
                 </Row>:null}
-
-
-
         </Container>
     )
 }

@@ -57,7 +57,7 @@ export default function OldRequests() {
                 <Row className="px-5">Your data could not be retreived at this time</Row>
                 : null}
             {!loading && requests? requests.map(x=>
-                <RequestBox value={x.value} timestamp={x.access_time._seconds}/>
+                <RequestBox index={x.id} value={x.value} timestamp={x.access_time._seconds}/>
             ) : null}
             <Row className="p-5" style={{width: '100%'}}>
                 <Button style={{marginRight: 'auto', marginLeft: 'auto'}} onClick = {()=>history.push('/Home')}>

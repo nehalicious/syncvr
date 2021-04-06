@@ -15,7 +15,7 @@ export default function RequestBox(props) {
 
     return(
         <Container className="p-4" style={containerStyle}>
-            <Row>Fibonacci number {props.value+1} = {props.value}</Row>
+            <Row>Fibonacci number {props.id} = {props.value}</Row>
             <Row>
                 <p>Time of access:</p>
                 <SimpleDateTime dateSeparator="-" format="MYD" timeSeparator=":" meridians="1">{props.timestamp}</SimpleDateTime>
